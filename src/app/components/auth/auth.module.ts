@@ -1,17 +1,20 @@
+import { AuthRoutingModule } from './auth-routing.module';
 import { NgModule } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { AppComponent } from 'src/app/app.component';
-
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-  
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
-  
+      AuthRoutingModule,
+      FormsModule
   ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: []
 })
-export class AppModule { }
+export class AuthModule { }

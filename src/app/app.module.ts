@@ -1,18 +1,15 @@
+import { AuthService } from './services/auth.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { RegisterComponent } from './components/auth/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
-// services
-import { AuthService } from 'src/app/services/auth.service';
 
 // firemodules
 import { environment } from 'src/environments/environment';
@@ -27,11 +24,10 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
     NavbarComponent,
-    LoginComponent,
-    RegisterComponent,
-    DashboardComponent
+    HomeComponent,
+    DashboardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +38,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    FlashMessagesModule.forRoot(),
-    FormsModule
+    FlashMessagesModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
