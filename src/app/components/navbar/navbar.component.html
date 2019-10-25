@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-color mb-4">
+    <div class="container">
+      <a routerLink="/" class="navbar-brand">Movies</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" >
+            <a routerLink="/" class="nav-link" >Movies</a>
+          </li>
+          <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+          </div> -->
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a routerLink="/login" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a routerLink="/register" class="nav-link">Register</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a href="#" class="nav-link">{{loggedInUser}}</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a href="#" (click)="onLogoutClick()" class="nav-link">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
