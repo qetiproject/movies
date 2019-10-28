@@ -7,24 +7,30 @@
         </h1>
         <form (submit)="onSubmit()">
           <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" name="firstName" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" name="lastName" class="form-control" required>
-          </div>
-          <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" [(ngModel)]="email"  class="form-control" required>
+            <input 
+              type="email" 
+              name="email" 
+              [(ngModel)]="email"  
+              class="form-control" 
+              required
+            >
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" [(ngModel)]="password"   class="form-control" required>
+            <input 
+              type="password" 
+              name="password" 
+              [(ngModel)]="password"   
+              class="form-control" 
+              required
+            >
           </div>
           <div class="form-group">
-              <label for="exampleFormControlFile1">Example file input</label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              <input 
+                type="file" 
+                class="form-control-file" 
+              >
           </div>
           <input type="submit" value="Register" class="btn bg-color btn-block">
         </form>

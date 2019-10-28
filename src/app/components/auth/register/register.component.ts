@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -11,15 +12,16 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class RegisterComponent implements OnInit {
   email: string;
   password: string;
-
+  
+  registrationForm: FormGroup;
   constructor(
     private authService: AuthService,
     private router: Router,
     private flasMessage: FlashMessagesService
   ) { }
+ 
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
 
   onSubmit() {
     if(this.email && this.password) {
