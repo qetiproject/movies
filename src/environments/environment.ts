@@ -13,6 +13,11 @@ export const environment = {
     messagingSenderId: '448582314568',
     appId: '1:448582314568:web:cc5924c4c8766cd7c3067d',
     measurementId: 'G-LWNTBPKQ45'
+  },
+  movieDbApi: {
+    apiKey: '85d084a1dd84fdc10a7d9eb41f92493d',
+    apiUrl: 'https://api.themoviedb.org/3/movie',
+    imageUrl: 'https://image.tmdb.org/t/p/w500'
   }
 };
 

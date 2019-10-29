@@ -19,6 +19,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NowPlayingMoviesComponent } from './now-playing-movies/now-playing-movies.component';
+import { HttpClientModule  } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,12 +29,14 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     NavbarComponent,
     HomeComponent,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NowPlayingMoviesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'movies'),
     AngularFirestoreModule,
@@ -40,7 +44,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     AngularFireStorageModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
