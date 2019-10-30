@@ -18,4 +18,7 @@ export class MovieService {
         // tslint:disable-next-line: max-line-length
         return this.http.get<NowPlayingMoviesResponseModel>(`${this.apiUrl}/now_playing?api_key=${this.apiKey}&language=en-US&page=${page}`);
     }
+    // getMovies(): Observable<NowPlayingMoviesResponseModel> {
+    //   return this.http.get<NowPlayingMoviesResponseModel>(`${this.apiUrl}/now_playing?api_key=${this.apiKey}&language=en-US`);
+    // }
 }

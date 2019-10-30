@@ -1,6 +1,6 @@
-import { MovieService } from './../services/movie.service';
+import { MovieService } from '../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
-import {  MoviesList } from '../models/MoviesList';
+import {  MoviesList } from '../../models/MoviesList';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -14,30 +14,45 @@ export class NowPlayingMoviesComponent implements OnInit {
   filterMovies: MoviesList[] = [];
   imageUrl: string = environment.movieDbApi.imageUrl;
 
-  currentIndex = 0;
+  currentPage = 1;
+  totalPages = 1;
   pageIndexes = [];
-  startIndex =0;
-  endIndex = 6;
 
   constructor(private moviesService: MovieService) { }
 
   ngOnInit() {
-    this.moviesService.getMovieList().subscribe( movie => {
+   this.getMovies();
+  }
+
+  
+  getMovies(pageNumber: number = 1) {
+    this.moviesService.getMovieList(pageNumber).subscribe( movie => {
       this.movies = movie.results;
+      console.log(this.movies)
       this.filterMovies = this.movies;
-      this.getArrayFromNumber(this.movies.length);
+      this.currentPage = movie.page;
+      this.totalPages = movie.total_pages;
+      this.getArrayFromNumber(movie.total_pages);
     });
   }
+
   getArrayFromNumber(length) {
     this.pageIndexes = [];
-    for (let i = 0; i < length / 6; i++) {
-      this.pageIndexes.push(i + 1);
+    for (let i = 1; i <= length; i++) {
+      this.pageIndexes.push({
+        id: i,
+        value: i
+      });
     }
-  }
-  updateIndex(pageIndex) {
-    this.startIndex = pageIndex * 6;
-    this.currentIndex = pageIndex;
-    this.endIndex = this.startIndex + 6;
+    // this.pageIndexes = this.pageIndexes.filter(i => ((i.id - 10) < this.currentPage) );
+    this.pageIndexes = this.pageIndexes.filter(i => {
+      if (i.id + 5 > this.currentPage) {
+
+        if ( (i.id - 5 < this.currentPage) && (i.id + 5 > this.currentPage) ) {
+          return i;
+        }
+      }
+    });
   }
 
   searchFilter(event: any) {
@@ -46,7 +61,6 @@ export class NowPlayingMoviesComponent implements OnInit {
     const enteredText = event.target.value;
     if (enteredText) {
       this.filterMovies = this.movies.filter(i => i.title.toLowerCase().indexOf(enteredText) >= 0);
-      console.log(this.filterMovies)
     } else {
       this.filterMovies = this.movies;
     }

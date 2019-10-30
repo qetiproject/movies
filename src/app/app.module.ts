@@ -19,8 +19,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { NowPlayingMoviesComponent } from './now-playing-movies/now-playing-movies.component';
+import { NowPlayingMoviesComponent } from './components/now-playing-movies/now-playing-movies.component';
 import { HttpClientModule  } from '@angular/common/http';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { HttpClientModule  } from '@angular/common/http';
     HomeComponent,
     DashboardComponent,
     NotFoundComponent,
-    NowPlayingMoviesComponent
+    NowPlayingMoviesComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
