@@ -3,20 +3,7 @@
     margin: 0 0 4px 0;
     font-weight: 600;
 }
-.searchForm {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.search {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #acacac;
-    margin: 10px;
-}
-.search:focus {
-    outline: none;
-}
+
 .movieList {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -60,11 +47,14 @@
 .movieImgHover .fa-heart {
     color: #000;
 }
-.titleDescription h2{
+.title_link {
+    color: #000;
+    text-decoration: none;
+}
+.title_link h2 {
     font-weight: 600;
     font-size: 1.1em;
     line-height: 1.1em;
-    margin: 0;
 }
 .titleDescription span {
     color: rgba(0,0,0,0.6);

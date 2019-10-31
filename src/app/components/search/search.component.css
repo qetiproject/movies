@@ -1,0 +1,14 @@
+.searchForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #acacac;
+    margin: 10px;
+}
+.search:focus {
+    outline: none;
+}

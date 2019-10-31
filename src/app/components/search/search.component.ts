@@ -11,15 +11,16 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
   }
-  // searchFilter(event: any) {
-  //   event.preventDefault();
+  searchFilter(event: any) {
+    event.preventDefault();
 
-  //   const enteredText = event.target.value;
-  //   if (enteredText) {
-  //     this.filterMovies = this.movies.filter(i => i.title.toLowerCase().indexOf(enteredText) >= 0);
-  //   } else {
-  //     this.filterMovies = this.movies;
-  //   }
-  //   this.getArrayFromNumber(this.filterMovies.length);
-  // }
+    const enteredText = event.target.value;
+    console.log(enteredText);
+    // if (enteredText) {
+    //   this.filterMovies = this.movies.filter(i => i.title.toLowerCase().indexOf(enteredText) >= 0);
+    // } else {
+    //   this.filterMovies = this.movies;
+    // }
+    // this.getArrayFromNumber(this.filterMovies.length);
+  }
 }

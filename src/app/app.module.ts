@@ -22,6 +22,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { NowPlayingMoviesComponent } from './components/now-playing-movies/now-playing-movies.component';
 import { HttpClientModule  } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
+import { MovieComponent } from './components/movie/movie.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SearchComponent } from './components/search/search.component';
     DashboardComponent,
     NotFoundComponent,
     NowPlayingMoviesComponent,
-    SearchComponent
+    SearchComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,

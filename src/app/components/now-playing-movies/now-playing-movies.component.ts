@@ -11,12 +11,12 @@ import { environment } from 'src/environments/environment';
 export class NowPlayingMoviesComponent implements OnInit {
 
   movies: MoviesList[] = [];
-  filterMovies: MoviesList[] = [];
   imageUrl: string = environment.movieDbApi.imageUrl;
 
   currentPage = 1;
   totalPages = 1;
   pageIndexes = [];
+  allMovies: MoviesList[] = [];
 
   constructor(private moviesService: MovieService) { }
 
@@ -24,18 +24,14 @@ export class NowPlayingMoviesComponent implements OnInit {
    this.getMovies();
   }
 
-  
   getMovies(pageNumber: number = 1) {
     this.moviesService.getMovieList(pageNumber).subscribe( movie => {
       this.movies = movie.results;
-      console.log(this.movies)
-      this.filterMovies = this.movies;
       this.currentPage = movie.page;
       this.totalPages = movie.total_pages;
       this.getArrayFromNumber(movie.total_pages);
     });
   }
-
   getArrayFromNumber(length) {
     this.pageIndexes = [];
     for (let i = 1; i <= length; i++) {
@@ -44,26 +40,7 @@ export class NowPlayingMoviesComponent implements OnInit {
         value: i
       });
     }
-    // this.pageIndexes = this.pageIndexes.filter(i => ((i.id - 10) < this.currentPage) );
-    this.pageIndexes = this.pageIndexes.filter(i => {
-      if (i.id + 5 > this.currentPage) {
-
-        if ( (i.id - 5 < this.currentPage) && (i.id + 5 > this.currentPage) ) {
-          return i;
-        }
-      }
-    });
+    this.pageIndexes = this.pageIndexes.filter(i => (i.id - 5 < this.currentPage) && (i.id + 5 > this.currentPage) );
   }
-
-  searchFilter(event: any) {
-    event.preventDefault();
-
-    const enteredText = event.target.value;
-    if (enteredText) {
-      this.filterMovies = this.movies.filter(i => i.title.toLowerCase().indexOf(enteredText) >= 0);
-    } else {
-      this.filterMovies = this.movies;
-    }
-    this.getArrayFromNumber(this.filterMovies.length);
-  }
+  
 }

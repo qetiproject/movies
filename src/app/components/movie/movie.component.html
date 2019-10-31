@@ -1,0 +1,20 @@
+<app-search></app-search>
+<div *ngIf="movieDetail || cast" class="movieDetail">
+    <div class="movieImg">
+      <img  [src]="movieDetail.backdrop_path ? (imageUrl + movieDetail.backdrop_path) : '../../../assets/img/No_Image_Available.jpg'" alt={{movieDetail.title}}>
+    </div>
+    <div class="movieDiescreprion">
+        <div class="titleDescription">
+          <h1>{{movieDetail.title}}</h1>
+          <span>({{movieDetail.release_date | date: 'y'}})</span>
+        </div>
+        <div class="overview">
+          <h2>Overview</h2>
+          <p>{{movieDetail.overview}}</p>
+        </div>  
+        <iframe [allowFullscreen]="true" [src]="videoUrl" frameborder="0"></iframe>
+    </div>
+  </div>
+  <div *ngFor="let item of cast">
+    <h2>{{item.name}}</h2>
+  </div>
