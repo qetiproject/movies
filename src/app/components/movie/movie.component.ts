@@ -1,11 +1,10 @@
 import { MovieService } from 'src/app/services/movie.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesList } from 'src/app/models/MoviesList';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MovieCredits } from 'src/app/models/MovieCredits';
-import { Cast } from 'src/app/models/Cast';
+import { Crew } from 'src/app/models/Crew';
 
 @Component({
   selector: 'app-movie',
@@ -17,8 +16,11 @@ export class MovieComponent implements OnInit {
   imageUrl: string = environment.movieDbApi.imageUrl;
   youtubeUrl: string = '';
   videoUrl: any;
-  movieCredit: MovieCredits;
-  cast: Cast;
+  // casts: Cast[];
+  crews: Crew[] = [];
+  showCrew: Crew[];
+  trailer: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
@@ -35,11 +37,28 @@ export class MovieComponent implements OnInit {
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.youtubeUrl + videoArr.results[0].key);
     });
     this.movieService.getMovieCredits(id).subscribe( movieCredit => {
-      console.log(movieCredit)
-      movieCredit.cast.forEach( casts => {
-       this.cast = casts;
-       console.log(this.cast)
+      // console.log(movieCredit);
+      // this.casts = movieCredit.cast;
+      // console.log(this.casts);
+      let crews = movieCredit.crew;
+      crews = crews.filter(crew => crew.job === 'Writer' || crew.job === 'Director');
+      crews.forEach(c => {
+        if(this.crews.find(i => i.id === c.id )) {
+          this.crews.find(i => i.id === c.id ).job.push(c.job);
+        } else {
+          this.crews.push({
+            id: c.id,
+            name: c.name,
+            job: [c.job]
+          });
+        }
       });
     });
+  }
+  playTrailer() {
+    this.trailer = true;
+  }
+  close() {
+    this.trailer = false;
   }
 }

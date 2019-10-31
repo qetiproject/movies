@@ -1,4 +1,9 @@
+* {
+    list-style-type: none;
+}
+
 .movieDetail {
+    position: relative;
     display: grid;
     grid-template-columns: .3fr 1fr;
     grid-gap: 20px;
@@ -23,6 +28,15 @@
 .titleDescription span {
     opacity: .6;
 }
-.overview h2 {
+.title {
     font-size: 25px;
+}
+
+.trailerVideo {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%; 
+    bottom: 0;
+    z-index: 2;
 }

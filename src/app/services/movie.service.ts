@@ -29,7 +29,6 @@ export class MovieService {
     }
     getMovieCredits(id: number): Observable<MovieCredits> {
       const url = `${this.apiUrl}/${id}/credits?api_key=${this.apiKey}&language=en-US`;
-      console.log(url)
-      return this.http.get<any> (url);
+      return this.http.get<MovieCredits>(url);
     }
 }
