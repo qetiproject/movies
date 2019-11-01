@@ -12,6 +12,7 @@ import { MoviesList } from '../models/MoviesList';
 export class MovieService {
     apiUrl: string = environment.movieDbApi.apiUrl;
     apiKey = environment.movieDbApi.apiKey;
+    personUrl = environment.movieDbApi.personUrl;
     youtubeUrl = 'https://www.youtube.com/embed/';
     constructor(private http: HttpClient ) { }
 
@@ -31,4 +32,8 @@ export class MovieService {
       const url = `${this.apiUrl}/${id}/credits?api_key=${this.apiKey}&language=en-US`;
       return this.http.get<MovieCredits>(url);
     }
+    // getPersonDetails(id: number): Observable<any> {
+    //   const url = `${this.personUrl}/${id}?api_key=${this.apiKey}&language=en-US`;
+    //   console.log(url)
+    // }
 }

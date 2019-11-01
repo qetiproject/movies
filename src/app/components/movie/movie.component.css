@@ -1,7 +1,6 @@
 * {
     list-style-type: none;
 }
-
 .movieDetail {
     position: relative;
     display: grid;
@@ -39,4 +38,9 @@
     width: 100%; 
     bottom: 0;
     z-index: 2;
+}
+.featuredCrewCard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0;
 }

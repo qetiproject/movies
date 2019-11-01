@@ -5,6 +5,7 @@ import { MoviesList } from 'src/app/models/MoviesList';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Crew } from 'src/app/models/Crew';
+import { Cast } from 'src/app/models/Cast';
 
 @Component({
   selector: 'app-movie',
@@ -14,11 +15,11 @@ import { Crew } from 'src/app/models/Crew';
 export class MovieComponent implements OnInit {
   movieDetail: MoviesList;
   imageUrl: string = environment.movieDbApi.imageUrl;
+  personUrl: string = environment.movieDbApi.personUrl;
   youtubeUrl: string = '';
   videoUrl: any;
-  // casts: Cast[];
+  casts: Cast[];
   crews: Crew[] = [];
-  showCrew: Crew[];
   trailer: boolean = false;
 
   constructor(
@@ -37,9 +38,6 @@ export class MovieComponent implements OnInit {
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.youtubeUrl + videoArr.results[0].key);
     });
     this.movieService.getMovieCredits(id).subscribe( movieCredit => {
-      // console.log(movieCredit);
-      // this.casts = movieCredit.cast;
-      // console.log(this.casts);
       let crews = movieCredit.crew;
       crews = crews.filter(crew => crew.job === 'Writer' || crew.job === 'Director');
       crews.forEach(c => {
@@ -54,6 +52,9 @@ export class MovieComponent implements OnInit {
         }
       });
     });
+    // this.movieService.getPersonDetails(id).subscribe( person => {
+    //   console.log(person)
+    // })
   }
   playTrailer() {
     this.trailer = true;

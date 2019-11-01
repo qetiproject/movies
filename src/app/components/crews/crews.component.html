@@ -1,0 +1,11 @@
+<div class="crews">
+    <div class="crewsList">
+        <section *ngFor="let crew of crews" class="castsCrewsList">
+            <header>
+                    <a href="#!"><img  class="castsCrewsImg" [src]="crew.profile_path ? (imageUrl + crew.profile_path) : '../../../assets/img/No_Image_Available.jpg'" alt={{crew.name}}></a>
+                    <a href="#!"><h2 class="castsCrewsTitle" >{{crew.name}}</h2></a>
+            </header>
+            <p>{{crew.job}}</p>
+        </section>
+    </div>
+</div>

@@ -1,5 +1,4 @@
 export interface MoviesList {
-  results: MoviesList[];
     id: number;
     title: string;
     overview: string;
@@ -8,4 +7,5 @@ export interface MoviesList {
     release_date: Date;
     vote_count: number;
     vote_average: number;
+    runtime: number;
 }

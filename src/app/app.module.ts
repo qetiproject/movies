@@ -23,7 +23,9 @@ import { NowPlayingMoviesComponent } from './components/now-playing-movies/now-p
 import { HttpClientModule  } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
 import { MovieComponent } from './components/movie/movie.component';
-
+import { CrewsComponent } from './components/crews/crews.component';
+import { CastComponent } from './components/casts/cast.component';
+import { CastsCrewsComponent } from './components/casts-crews/casts-crews.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,10 @@ import { MovieComponent } from './components/movie/movie.component';
     NotFoundComponent,
     NowPlayingMoviesComponent,
     SearchComponent,
-    MovieComponent
+    MovieComponent,
+    CastComponent,
+    CrewsComponent,
+    CastsCrewsComponent
   ],
   imports: [
     BrowserModule,

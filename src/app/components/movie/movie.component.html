@@ -1,7 +1,7 @@
 <app-search></app-search>
-<div *ngIf="movieDetail || cast" class="movieDetail">
+<div *ngIf="movieDetail" class="movieDetail">
     <div class="movieImg">
-      <img  [src]="movieDetail.backdrop_path ? (imageUrl + movieDetail.backdrop_path) : '../../../assets/img/No_Image_Available.jpg'" alt={{movieDetail.title}}>
+      <img [src]="movieDetail.backdrop_path ? (imageUrl + movieDetail.backdrop_path) : '../../../assets/img/No_Image_Available.jpg'" alt={{movieDetail.title}}>
     </div>
     <div class="movieDiescreprion">
         <div class="titleDescription">
@@ -19,26 +19,19 @@
         <div class="overview">
           <h2 class="title">Overview</h2>
           <p>{{movieDetail.overview}}</p>
-        </div>  
+          <span>runtime: {{movieDetail.runtime}}</span>
+        </div>   
         <div class="featuredCrew">
-            <h1 class="title">Featured Crew</h1>
-            <ul class="featuredCrewCard" *ngFor="let item of crews">
-              <li class="crewCard">
-                  <h2>{{item.name}}</h2>
+            <h3 class="title">Featured Crew</h3>
+            <ul class="featuredCrewCard" >
+              <li class="crewCard" *ngFor="let item of crews">
+                  <h4>{{item.name}}</h4>
                   <span *ngFor="let job of item.job">{{job}} </span>
               </li>
-            </ul>
+            </ul> 
         </div>
     </div>
-     
-
-  <!-- <h1 class="text-center">Casts</h1>
-  <ul class="casts" *ngFor="let item of casts">
-    <li class="castsCard">
-        <h1>{{item.name}}</h1>
-        <p>{{item.character}}</p>
-        <img [src]="imageUrl + item.profile_path">
-    </li>
-  </ul>
-  -->
 </div> 
+<h1>Top Billed Cast</h1>
+<app-cast [castCount]="4"></app-cast>
+<a href="#!">Full Cast&Crew</a>
