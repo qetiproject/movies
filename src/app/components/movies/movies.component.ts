@@ -1,14 +1,14 @@
-import { MovieService } from '../../services/movie.service';
-import { Component, OnInit } from '@angular/core';
-import {  MoviesList } from '../../models/MoviesList';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MoviesList } from 'src/app/models/MoviesList';
 import { environment } from 'src/environments/environment';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
-  selector: 'app-now-playing-movies',
-  templateUrl: './now-playing-movies.component.html',
-  styleUrls: ['./now-playing-movies.component.css']
+  selector: 'app-movies',
+  templateUrl: './movies.component.html',
+  styleUrls: ['./movies.component.css']
 })
-export class NowPlayingMoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit {
 
   movies: MoviesList[] = [];
   imageUrl: string = environment.movieDbApi.imageUrl;
@@ -17,7 +17,7 @@ export class NowPlayingMoviesComponent implements OnInit {
   totalPages = 1;
   pageIndexes = [];
   allMovies: MoviesList[] = [];
-
+  @Output() moviesList = new EventEmitter();
   constructor(private moviesService: MovieService) { }
 
   ngOnInit() {
@@ -42,4 +42,5 @@ export class NowPlayingMoviesComponent implements OnInit {
     }
     this.pageIndexes = this.pageIndexes.filter(i => (i.id - 5 < this.currentPage) && (i.id + 5 > this.currentPage) );
   }
+
 }

@@ -26,6 +26,10 @@ import { MovieComponent } from './components/movie/movie.component';
 import { CrewsComponent } from './components/crews/crews.component';
 import { CastComponent } from './components/casts/cast.component';
 import { CastsCrewsComponent } from './components/casts-crews/casts-crews.component';
+import { PopularMovieComponent } from './components/popular-movie/popular-movie.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { TopRatedComponent } from './components/top-rated/top-rated.component';
+import { PersonDetailInfoComponent } from './component/person-detail-info/person-detail-info.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { CastsCrewsComponent } from './components/casts-crews/casts-crews.compon
     MovieComponent,
     CastComponent,
     CrewsComponent,
-    CastsCrewsComponent
+    CastsCrewsComponent,
+    PopularMovieComponent,
+    MoviesComponent,
+    TopRatedComponent,
+    PersonDetailInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -25,10 +25,9 @@ export class CastComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieService.getMovieCredits(id).subscribe( movieCredit => {
 
-     this.castCount 
+     this.castCount
         ? this.casts = movieCredit.cast.slice(0, this.castCount)
         : this.casts = movieCredit.cast;
-    //  this.crews = movieCredit.crew;
     });
   }
 }

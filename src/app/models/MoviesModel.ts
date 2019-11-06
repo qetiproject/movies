@@ -1,5 +1,5 @@
 import { MoviesList } from './MoviesList';
-export interface NowPlayingMoviesResponseModel {
+export interface MoviesModel {
    total_pages: number;
    total_results: number;
    page: number;

@@ -1,15 +1,14 @@
-import { MovieService } from '../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
-import {  MoviesList } from '../../models/MoviesList';
+import { MovieService } from 'src/app/services/movie.service';
+import { MoviesList } from 'src/app/models/MoviesList';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-now-playing-movies',
-  templateUrl: './now-playing-movies.component.html',
-  styleUrls: ['./now-playing-movies.component.css']
+  selector: 'app-popular-movie',
+  templateUrl: './popular-movie.component.html',
+  styleUrls: ['./popular-movie.component.css']
 })
-export class NowPlayingMoviesComponent implements OnInit {
-
+export class PopularMovieComponent implements OnInit {
   movies: MoviesList[] = [];
   imageUrl: string = environment.movieDbApi.imageUrl;
 
@@ -21,15 +20,15 @@ export class NowPlayingMoviesComponent implements OnInit {
   constructor(private moviesService: MovieService) { }
 
   ngOnInit() {
-   this.getMovies();
+    this.getPopularMovies();
   }
 
-  getMovies(pageNumber: number = 1) {
-    this.moviesService.getNowPlayingMovies(pageNumber).subscribe( movie => {
-      this.movies = movie.results;
-      this.currentPage = movie.page;
-      this.totalPages = movie.total_pages;
-      this.getArrayFromNumber(movie.total_pages);
+  getPopularMovies(pageNumber: number = 1) {
+    this.moviesService.getPopularMovies(pageNumber).subscribe(popularMovie => {
+      this.movies = popularMovie.results;
+      this.currentPage = popularMovie.page;
+      this.totalPages = popularMovie.total_pages;
+      this.getArrayFromNumber(popularMovie.total_pages);
     });
   }
   getArrayFromNumber(length) {

@@ -2,10 +2,10 @@
         <div class="castsList">
             <section *ngFor="let cast of casts" class="castsCrewsList" >
                 <header>
-                    <a href="#!">
+                    <a href="person/{{ cast.id}}">
                         <img class="castsCrewsImg" [src]=" cast.profile_path ? (imageUrl + cast.profile_path) : '../../../assets/img/No_Image_Available.jpg'" alt={{cast.name}}>
                     </a>
-                    <a href="#!"><h2 class="castsCrewsTitle" >{{cast.name}}</h2></a>
+                    <a href="person/{{ cast.id}}"><h2 class="castsCrewsTitle" >{{cast.name}}</h2></a>
                 </header>
                 <p>{{cast.character}}</p>
             </section>

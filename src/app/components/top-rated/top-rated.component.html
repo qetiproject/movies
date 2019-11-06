@@ -1,0 +1,44 @@
+<h1 class="pageTitle">Top Rated Movies</h1>
+<app-search></app-search>
+<div *ngIf="movies">
+  <div class="card-group movieList">
+      <div class="card movieCard" *ngFor="let movie of movies ">
+        <div class="image_content">
+          <a id={{movie.id}} title={{movie.title}} href="movie/{{ movie.id}}" >
+           <img [src]="movie.poster_path ? (imageUrl + movie.poster_path) : '../../../assets/img/No_Image_Available.jpg'"  alt={{movie.title}} class="card-img-top movieImg" alt=`{{movie.title}}`>
+            <div class="movieImgHover">
+                <i class="fa fa-heart" aria-hidden="true"></i>
+                <i class="fa fa-watchlist" aria-hidden="true"></i>
+            </div>
+          </a>
+        </div>
+          <div class="info">
+            <div class="wrapper">
+              <div class="count"></div>
+              <div class="titleDescription">
+                  <a href="movie/{{ movie.id}}" class="title_link"><h2 class="card-title">{{ movie.title }}</h2></a>
+                  <span>{{movie.release_date | date}}</span>
+              </div>
+            </div>
+            <p class="overview">{{ movie.overview  | slice:0:120 }}...</p>
+            <div class="viewMore">
+              <a href="movie/{{ movie.id}}">More Info</a>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<ul class="pagination movePagination">
+  <li class="page-item" [class.disabled]="currentPage == 1">
+    <button class="page-link" (click)="getTopRatedMovies(currentPage - 1)" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+    </button>
+  </li>
+  <li *ngFor="let i of pageIndexes" class="page-item" [class.active]="currentPage == i.id">
+    <a (click)="getTopRatedMovies(i.id)" class="page-link ">{{i.id}}</a></li>
+  <li class="page-item" [class.disabled]="currentPage == totalPages">
+    <a class="page-link" (click)="getTopRatedMovies(currentPage + 1)" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+  </li>
+</ul>
