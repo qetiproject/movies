@@ -1,0 +1,19 @@
+.personAddInfo {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+@media only screen and (min-width: 320px) {
+    .personInfo {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
+    .personProfileImg {
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 720px) {
+    .personInfo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

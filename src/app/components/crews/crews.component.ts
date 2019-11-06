@@ -12,7 +12,6 @@ import { Crew } from 'src/app/models/Crew';
 export class CrewsComponent implements OnInit {
   imageUrl: string = environment.movieDbApi.imageUrl;
   crews: Crew[];
-  
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService
@@ -21,11 +20,6 @@ export class CrewsComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieService.getMovieCredits(id).subscribe( movieCredit => {
-
-    //  this.castCount 
-    //     ? this.casts = movieCredit.cast.slice(0, this.castCount)
-    //     : this.casts = movieCredit.cast;
-   
      this.crews = movieCredit.crew;
     });
   }

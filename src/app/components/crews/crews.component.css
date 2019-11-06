@@ -1,10 +1,4 @@
-.castsList, .crewsList {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
-    text-align: center;
-    padding: 10px;
-}
+
 .castsCrewsList {
     border: 1px solid #e3e3e3;
     padding-bottom: 10px;
@@ -18,4 +12,24 @@
     font-size: 25px;
     color: #000;
     padding: 5px;
+} 
+
+@media only screen and (min-width: 320px) {
+    .castsList, .crewsList {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+        text-align: center;
+        padding: 10px;
+    }
+}
+@media only screen and (min-width: 720px) {
+    .castsList, .crewsList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media only screen and (min-width: 1040px) {
+    .castsList, .crewsList {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

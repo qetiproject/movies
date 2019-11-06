@@ -19,22 +19,18 @@ export class MoviesComponent implements OnInit {
   pageIndexes = [];
   allMovies: MoviesList[] = [];
   @Output() moviesList = new EventEmitter();
-  @Output() moviesType = new EventEmitter();
   movieType = '';
   pageTitle = 'All Movies';
   constructor(private moviesService: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
     this.route.url.subscribe(url => {
-      this.movieType = url[1].toString(); 
-      this.getMovies();    
+      this.movieType = url[1].toString();
+      this.getMovies();
     });
-
   }
 
   getMovies(pageNumber: number = 1) {
-
     switch (this.movieType) {
       case 'nowPlaying':
           this.getNowPlayingMovies(pageNumber);

@@ -1,12 +1,18 @@
-<div *ngIf="personDetails" class="movieDetail">
-  <img [src]="personDetails.profile_path ? (imageUrl + personDetails.profile_path) : '../../../assets/img/No_Image_Available.jpg'" alt={{personDetails.name}}>
-  <h1>{{personDetails.name}}</h1>
-  <h2>biography</h2>
-  <p>{{personDetails.biography}}</p>
-  <h3>Known For</h3>
-  <p>{{personDetails.known_for_department}}</p>
-  <h3>Birthday</h3>
-  <span>{{personDetails.birthday}}</span>
-  <h3>Place of Birth</h3>
-  <p>{{personDetails.place_of_birth}}</p>
+<div *ngIf="personDetails" >
+  <div class="personInfo">
+    <img class="personProfileImg" [src]="personDetails.profile_path ? (imageUrl + personDetails.profile_path) : '../../../assets/img/No_Image_Available.jpg'" alt={{personDetails.name}}>
+    <div class="personDetailInfo">
+      <h1>{{personDetails.name}}</h1>
+      <h2>Biography</h2>
+      <p>{{personDetails.biography}}</p>
+    </div>
   </div>
+  <div class="personAddInfo">
+      <h3>Known For: </h3>
+      <p>{{personDetails.known_for_department}}</p>
+      <h3>Birthday: </h3>
+      <span>{{personDetails.birthday}}</span>
+      <h3>Place of Birth: </h3>
+      <p>{{personDetails.place_of_birth}}</p>
+  </div>
+</div>

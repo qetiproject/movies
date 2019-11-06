@@ -15,6 +15,8 @@ export class MovieService {
     apiKey = environment.movieDbApi.apiKey;
     personUrl = environment.movieDbApi.personUrl;
     youtubeUrl = 'https://www.youtube.com/embed/';
+    searchmovie = 'https://api.themoviedb.org/3/search/movie';
+
     constructor(private http: HttpClient ) { }
 
     getNowPlayingMovies(page: number = 1): Observable<MoviesModel> {
@@ -46,5 +48,9 @@ export class MovieService {
     getPersonImage(id: number): Observable<PersonDetails> {
       const url = `${this.personUrl}/${id}/images?api_key=${this.apiKey}&language=en-US`;
       return this.http.get<PersonDetails>(url);
+    }
+    searchMovies(page: number = 1): Observable<MoviesList> {
+      const url = `${this.searchmovie}/?api_key=${this.apiKey}&language=en-US&page=${page}&include_adult=false`;
+      return this.http.get<MoviesList>(url);
     }
 }

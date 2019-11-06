@@ -1,6 +1,6 @@
-import { MoviesComponent } from './components/movies/movies.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MoviesComponent } from './components/movies/movies.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { CastsCrewsComponent } from './components/casts-crews/casts-crews.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';

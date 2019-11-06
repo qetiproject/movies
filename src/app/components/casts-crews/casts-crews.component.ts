@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./casts-crews.component.css']
 })
 export class CastsCrewsComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
   }
-
 }

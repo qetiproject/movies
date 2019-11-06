@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-search',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
   }
+
   searchFilter(event: any) {
     event.preventDefault();
-
     const enteredText = event.target.value;
     console.log(enteredText);
     // if (enteredText) {
