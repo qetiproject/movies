@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
-import { PersonDetails } from './../../models/PersonDetails';
+import { PersonDetails } from '../../models/PersonDetails';
 import { environment } from 'src/environments/environment';
 
 @Component({

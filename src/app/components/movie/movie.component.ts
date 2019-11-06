@@ -15,7 +15,6 @@ import { Cast } from 'src/app/models/Cast';
 export class MovieComponent implements OnInit {
   movieDetail: MoviesList;
   imageUrl: string = environment.movieDbApi.imageUrl;
-  personUrl: string = environment.movieDbApi.personUrl;
   youtubeUrl: string = '';
   videoUrl: any;
   casts: Cast[];
@@ -52,9 +51,6 @@ export class MovieComponent implements OnInit {
         }
       });
     });
-    // this.movieService.getPersonDetails(id).subscribe( person => {
-    //   console.log(person)
-    // })
   }
   playTrailer() {
     this.trailer = true;

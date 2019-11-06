@@ -19,17 +19,14 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { NowPlayingMoviesComponent } from './components/now-playing-movies/now-playing-movies.component';
 import { HttpClientModule  } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { CrewsComponent } from './components/crews/crews.component';
 import { CastComponent } from './components/casts/cast.component';
 import { CastsCrewsComponent } from './components/casts-crews/casts-crews.component';
-import { PopularMovieComponent } from './components/popular-movie/popular-movie.component';
 import { MoviesComponent } from './components/movies/movies.component';
-import { TopRatedComponent } from './components/top-rated/top-rated.component';
-import { PersonDetailInfoComponent } from './component/person-detail-info/person-detail-info.component';
+import { PersonDetailInfoComponent } from './components/person-detail-info/person-detail-info.component';
 
 @NgModule({
   declarations: [
@@ -38,15 +35,12 @@ import { PersonDetailInfoComponent } from './component/person-detail-info/person
     HomeComponent,
     DashboardComponent,
     NotFoundComponent,
-    NowPlayingMoviesComponent,
     SearchComponent,
     MovieComponent,
     CastComponent,
     CrewsComponent,
     CastsCrewsComponent,
-    PopularMovieComponent,
     MoviesComponent,
-    TopRatedComponent,
     PersonDetailInfoComponent
   ],
   imports: [
