@@ -27,7 +27,7 @@ export class MoviesComponent implements OnInit {
       let movieType = this.moviesType;
       if (url[1]) {
         movieType = url[1].toString();
-      }
+      } 
       this.getMovies(movieType);
     });
   }
@@ -46,6 +46,9 @@ export class MoviesComponent implements OnInit {
         this.getPopularMovies(pageNumber);
         this.pageTitle = 'Top Rated Movies';
         break;
+      case 'dashboard':
+        this.getPopularMovies(pageNumber);
+        this.pageTitle = 'Popular Movies';
     }
   }
   getNowPlayingMovies(pageNumber: number) {
@@ -53,7 +56,6 @@ export class MoviesComponent implements OnInit {
       this.moviesType
         ? this.movies = movie.results.slice(0, 4)
         : this.movies = movie.results;
-
       this.currentPage = movie.page;
       this.totalPages = movie.total_pages;
       this.getArrayFromNumber(movie.total_pages);
