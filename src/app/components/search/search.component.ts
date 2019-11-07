@@ -1,3 +1,5 @@
+import { Router, ActivatedRoute } from '@angular/router';
+import { MoviesList } from 'src/app/models/MoviesList';
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -7,22 +9,26 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
+  search: string = '';
+  filterMovies: MoviesList[] = [];
   constructor(
+    private movieservice: MovieService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
   }
-
   searchFilter(event: any) {
     event.preventDefault();
     const enteredText = event.target.value;
-    console.log(enteredText);
-    // if (enteredText) {
-    //   this.filterMovies = this.movies.filter(i => i.title.toLowerCase().indexOf(enteredText) >= 0);
-    // } else {
-    //   this.filterMovies = this.movies;
-    // }
-    // this.getArrayFromNumber(this.filterMovies.length);
+    this.search = enteredText;
+    this.movieservice.searchMovies(this.search).subscribe( search => {
+     search.results.forEach(movie => {
+       if (movie.title.toLowerCase() === this.search) {
+          this.filterMovies = movie;
+          // console.log(this.filterMovies);
+        }
+     });
+  });
   }
 }

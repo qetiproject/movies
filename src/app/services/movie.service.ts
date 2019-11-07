@@ -49,8 +49,8 @@ export class MovieService {
       const url = `${this.personUrl}/${id}/images?api_key=${this.apiKey}&language=en-US`;
       return this.http.get<PersonDetails>(url);
     }
-    searchMovies(page: number = 1): Observable<MoviesList> {
-      const url = `${this.searchmovie}/?api_key=${this.apiKey}&language=en-US&page=${page}&include_adult=false`;
+    searchMovies(search: string): Observable<any> {
+      const url = `${this.searchmovie}/?api_key=${this.apiKey}&query=${search}`;
       return this.http.get<MoviesList>(url);
     }
 }

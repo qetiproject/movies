@@ -21,6 +21,9 @@ export class MoviesComponent implements OnInit {
   @Output() moviesList = new EventEmitter();
   movieType = '';
   pageTitle = 'All Movies';
+
+  // movies on home page
+  @Input() moviesType: string;
   constructor(private moviesService: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -46,7 +49,6 @@ export class MoviesComponent implements OnInit {
         break;
     }
   }
-
   getNowPlayingMovies(pageNumber: number) {
     this.moviesService.getNowPlayingMovies(pageNumber).subscribe( movie => {
       this.movies = movie.results;
