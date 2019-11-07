@@ -13,15 +13,12 @@ export class MoviesComponent implements OnInit {
 
   movies: MoviesList[] = [];
   imageUrl: string = environment.movieDbApi.imageUrl;
-
   currentPage = 1;
   totalPages = 1;
   pageIndexes = [];
   allMovies: MoviesList[] = [];
   pageTitle = 'All Movies';
 
-  // movies on home page
-  // tslint:disable-next-line: no-input-rename
   @Input('moviesType') moviesType: string;
   constructor(private moviesService: MovieService, private route: ActivatedRoute) { }
 

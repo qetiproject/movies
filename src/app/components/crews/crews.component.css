@@ -26,9 +26,15 @@
 @media only screen and (min-width: 720px) {
     .castsList, .crewsList {
         grid-template-columns: repeat(2, 1fr);
+        padding: 0;
     }
 }
 @media only screen and (min-width: 1040px) {
+    .castsList, .crewsList {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media only screen and (min-width: 1200px) {
     .castsList, .crewsList {
         grid-template-columns: repeat(4, 1fr);
     }

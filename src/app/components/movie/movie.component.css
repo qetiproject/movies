@@ -37,6 +37,9 @@
     grid-template-columns: repeat(2, 1fr);
     padding: 0;
 }
+.fullCastLink {
+    color: #000;
+}
 @media only screen and (min-width: 320px) {
     .movieDetail {
         position: relative;
