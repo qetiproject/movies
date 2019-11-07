@@ -1,4 +1,5 @@
 <div class="searchForm">
     <i class="fa fa-search"></i>
-    <input (keyup)="searchFilter($event)" id="search" class="search" type="text" placeholder="search for a movie">
+    <input #inputText  id="search" class="search" type="text" placeholder="search for a movie">
+    <button (click)="searchFilter(inputText.value)">Search</button>
 </div>

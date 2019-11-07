@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MoviesList } from 'src/app/models/MoviesList';
 import { environment } from 'src/environments/environment';
 import { MovieService } from 'src/app/services/movie.service';
@@ -18,23 +18,25 @@ export class MoviesComponent implements OnInit {
   totalPages = 1;
   pageIndexes = [];
   allMovies: MoviesList[] = [];
-  @Output() moviesList = new EventEmitter();
-  movieType = '';
   pageTitle = 'All Movies';
 
   // movies on home page
-  @Input() moviesType: string;
+  // tslint:disable-next-line: no-input-rename
+  @Input('moviesType') moviesType: string;
   constructor(private moviesService: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.url.subscribe(url => {
-      this.movieType = url[1].toString();
-      this.getMovies();
+      let movieType = this.moviesType;
+      if (url[1]) {
+        movieType = url[1].toString();
+      }
+      this.getMovies(movieType);
     });
   }
 
-  getMovies(pageNumber: number = 1) {
-    switch (this.movieType) {
+  getMovies(type: string, pageNumber: number = 1) {
+    switch (type) {
       case 'nowPlaying':
           this.getNowPlayingMovies(pageNumber);
           this.pageTitle = 'Now Playing Movies';
@@ -51,7 +53,10 @@ export class MoviesComponent implements OnInit {
   }
   getNowPlayingMovies(pageNumber: number) {
     this.moviesService.getNowPlayingMovies(pageNumber).subscribe( movie => {
-      this.movies = movie.results;
+      this.moviesType
+        ? this.movies = movie.results.slice(0, 4)
+        : this.movies = movie.results;
+
       this.currentPage = movie.page;
       this.totalPages = movie.total_pages;
       this.getArrayFromNumber(movie.total_pages);
@@ -60,7 +65,9 @@ export class MoviesComponent implements OnInit {
 
   getPopularMovies(pageNumber: number) {
     this.moviesService.getPopularMovies(pageNumber).subscribe(popularMovie => {
-      this.movies = popularMovie.results;
+      this.moviesType
+      ? this.movies = popularMovie.results.slice(0, 4)
+      : this.movies = popularMovie.results;
       this.currentPage = popularMovie.page;
       this.totalPages = popularMovie.total_pages;
       this.getArrayFromNumber(popularMovie.total_pages);
@@ -68,7 +75,9 @@ export class MoviesComponent implements OnInit {
   }
   getTopRatedMovies(pageNumber: number = 1) {
     this.moviesService.getTopRatedMovies(pageNumber).subscribe(topRatedMovie => {
-      this.movies = topRatedMovie.results;
+      this.moviesType
+      ? this.movies = topRatedMovie.results.slice(0, 4)
+      : this.movies = topRatedMovie.results;
       this.currentPage = topRatedMovie.page;
       this.totalPages = topRatedMovie.total_pages;
       this.getArrayFromNumber(topRatedMovie.total_pages);
@@ -86,4 +95,12 @@ export class MoviesComponent implements OnInit {
     this.pageIndexes = this.pageIndexes.filter(i => (i.id - 5 < this.currentPage) && (i.id + 5 > this.currentPage) );
   }
 
+  getSearchedMovies(searchText: string) {
+    this.moviesService.searchMovies(searchText).subscribe( movies => {
+      this.moviesType = this.movies = movies.results;
+      this.currentPage = movies.page;
+      this.totalPages = movies.total_pages;
+      this.getArrayFromNumber(movies.total_pages);
+    });
+  }
 }

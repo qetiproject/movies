@@ -1,5 +1,5 @@
+<app-search (SearchClicked)="getSearchedMovies($event)"></app-search>
 <h1 class="pageTitle">{{pageTitle}}</h1>
-<app-search></app-search>
 <div *ngIf="movies">
   <div class="card-group movieList">
       <div class="card movieCard" *ngFor="let movie of movies ">
@@ -28,7 +28,7 @@
       </div>
   </div>
 </div>
-<ul class="pagination movePagination">
+<ul class="pagination movePagination" *ngIf="!moviesType">
   <li class="page-item" [class.disabled]="currentPage == 1">
     <button class="page-link" (click)="getMovies(currentPage - 1)" aria-label="Previous">
       <span aria-hidden="true">&laquo;</span>
